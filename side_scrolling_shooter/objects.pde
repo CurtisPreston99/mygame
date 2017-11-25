@@ -9,14 +9,9 @@ class step{
   }
   
   void update(){
-    if(global.keys[97]){
-      x=x-player.spd;
-    }
-    if(global.keys[100]){
-      x=x+player.spd;
-    }
+      x=x+player.xspd;
     
-    if(x+player.x<width&&x+player.x>0){
+    if(x+player.x<width&&x+player.x+w>0){
       //println(true);
       rect(x+player.x,y,w,h);
     }else{

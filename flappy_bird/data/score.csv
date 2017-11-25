@@ -5,46 +5,50 @@ score,name
 11,curtis
 8," curtis
 "
-8,"         v "
 8," curtis
    "
+8,"         v "
 6," curtis"
 6," curtis"
 5," "
 4,
-3,"test        "
+4,"curtis
+"
 3,"         v"
+3,"test        "
 2," "
 2," curtis
    "
-1,"         v     "
+1,"curtis            "
 1," curtis
    "
-1,"curtis            "
 1," "
 1,test
-0,"         v     "
-0," curtis"
+1,"         v     "
+0,curtis
+0,curtis
+0,curtis
 0,
-0,"curtis "
-0,curtis
+0,"         v     "
+0,"curtis       "
+0,"curtis       "
 0,"  "
-0," curtis"
 0,"curtis         "
-0,"curtis       "
-0,curtis
-0,"curtis       "
-0,"curtis       "
+0," curtis"
+0,"curtis "
+0," curtis
+   "
+0," curtis"
+0," "
 0," curtis
 "
 0,"curtis       "
 0,"         v        "
-0," curtis
-   "
-0,"curtis       "
-0," "
+0,"curtis    "
 0,"curtis       "
 0,"curtis       "
-0,
+0,"curtis       "
 0,"       "
+0,
+0,"curtis       "
 0,

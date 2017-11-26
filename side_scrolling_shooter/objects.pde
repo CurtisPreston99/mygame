@@ -11,7 +11,8 @@ class step{
   void update(){
       x=x+player.xspd;
     
-    if(x+player.x<width&&x+player.x+w>0){
+    if(x+player.x<wid&&x+player.x+w>0){
+      //scale(global.ScaleX,global.ScaleY);
       //println(true);
       rect(x+player.x,y,w,h);
     }else{

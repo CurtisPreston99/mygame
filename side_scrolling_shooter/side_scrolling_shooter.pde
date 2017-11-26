@@ -6,7 +6,7 @@ ArrayList<step> col = new ArrayList<step>();
 
 
 int wid, hig;
-int scalex,scaley;
+int scalex, scaley;
 void setup() {
   ellipseMode(CORNER);
   size(500, 500);
@@ -25,13 +25,10 @@ void setup() {
 }
 
 void draw() {
-  //if(frameCount%40==0){
-    //scalex=width/wid;
-    //scaley=height/hig;
-    //scale(scalex, scaley);
-  //}
+  scale(global.ScaleX, global.ScaleY);
+
   background(255);
-  player.update(col);
+  player.update();
   player.dra();
 
 
@@ -39,10 +36,11 @@ void draw() {
     step part = col.get(i);
     part.update();
   }
-  
-  scalex=width/wid;
-    scaley=height/hig;
-    scale(scalex, scaley);
+  float xs=(float)width/wid;
+  float ys=(float)height/hig;
+  global.updatescale(xs, ys);
+  println("x scale :", global.ScaleX, " should be", ys);
+  println("y scale :", global.ScaleY, " should be", xs);
 }
 
 
@@ -55,11 +53,12 @@ void keyReleased() {
 }
 
 class globals {
-
   Boolean[] keys = new Boolean[255];
-
+  float ScaleX, ScaleY;
 
   globals() {
+    ScaleX=1.5;
+    ScaleY=1;
     for (int x=0; x<keys.length; x++) {
       keys[x]=false;
     }
@@ -72,5 +71,9 @@ class globals {
     if (iteam<255) {
       keys[iteam]=swit;
     }
+  }
+  void updatescale(float newx, float newy) {
+    ScaleX=(float)newx;
+    ScaleY=(float)newy;
   }
 }

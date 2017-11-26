@@ -16,8 +16,9 @@ class player {
 
 
 
-  void update(ArrayList obj) {
-    println("yspd  :",yspd);
+  void update() {
+    //scale(global.ScaleX,global.ScaleY);
+    //println("yspd  :",yspd);
     if(global.keys[97]){
       xspd=spd;
     }
@@ -38,13 +39,13 @@ class player {
     }
 
     if (colva()&&yspd>0) {
-      println("ground");
+      //println("ground");
       grounded=true;
       yspd=0;
     }
     if (colvb()&&yspd<0) {
       
-      println("no-ground");
+      //println("no-ground");
       grounded=false;
       yspd=0;
     }
@@ -55,11 +56,11 @@ class player {
  
 
 
-    if (y+yspd+h/2<height-floor) {
+    if (y+yspd+h/2<hig-floor) {
 
       y=y+yspd;
     } else {
-      y=height-floor-h/2;
+      y=(hig-floor-h/2);
       grounded=true;
       yspd=0;
     }
@@ -69,7 +70,7 @@ class player {
 
   void dra() {
     ellipse(x-15, y-15, w, h);
-    line(0, height-floor, 7000, height-floor);
+    line(0, hig-floor, 7000, hig-floor);
   }
 
   public boolean colva() {//colliision from above

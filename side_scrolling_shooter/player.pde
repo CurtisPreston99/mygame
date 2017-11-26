@@ -48,11 +48,14 @@ class player {
       grounded=false;
       yspd=0;
     }
+    if(colh()&&xspd!=0){
+      xspd=0;
+    }
 
  
 
 
-    if (y+yspd+h<height-floor) {
+    if (y+yspd+h/2<height-floor) {
 
       y=y+yspd;
     } else {
@@ -102,7 +105,7 @@ class player {
       if (part.x-w/2<0&& part.x+w/2>-part.w) {
 
 
-        if (part.y<y+h/2 && part.y+part.w+h/2>y) {
+        if (part.y<y+h/2 && part.y+part.w+h>y) {
           coll=true;
           //println(true);
         }
@@ -120,10 +123,10 @@ class player {
 
       //println(part.x);
       //println(part.w);
-      if (part.y<y+w/2 && part.y+part.h>y) {
-        if (part.x+xspd-w/2<0&& part.x+w+xspd/2>-part.w) {
+      if (part.y<y+h/2 && part.y+part.w+h/2>y) {
+        if (part.x-(w/2)+xspd<0&& part.x+w/2+xspd>-part.w) {
 
-
+          print(true);
 
           coll=true;
           //println(true);

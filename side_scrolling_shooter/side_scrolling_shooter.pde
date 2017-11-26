@@ -9,22 +9,25 @@ int wid, hig;
 int scalex, scaley;
 void setup() {
   ellipseMode(CORNER);
-  size(500, 500);
+  size(500, 720);
   surface.setResizable(true);
   //fullScreen();
   wid=width;
   hig=height;
   player=new player(width/2, height/2, 1, 20, 10, 20);
-  col.add(new step(150, 350, 50, 50));
-  col.add(new step(100, 400, 50, 50));
-  col.add(new step(300, 300, 50, 50));
-  col.add(new step(500, 350, 50, 50));
-  col.add(new step(600, 400, 50, 50));
+  col.add(new step(150, 450, 50, 50));
+  col.add(new step(100, 500, 50, 50));
+  col.add(new step(300, 600, 50, 50));
+  col.add(new step(500, 650, 50, 50));
+  col.add(new step(450, 700, 50, 50));
   scalex=0;
   scaley=0;
 }
 
 void draw() {
+  if(mousePressed){
+  player.bullet();
+  }
   scale(global.ScaleX, global.ScaleY);
 
   background(255);
@@ -39,8 +42,8 @@ void draw() {
   float xs=(float)width/wid;
   float ys=(float)height/hig;
   global.updatescale(xs, ys);
-  println("x scale :", global.ScaleX, " should be", ys);
-  println("y scale :", global.ScaleY, " should be", xs);
+  //println("x scale :", global.ScaleX, " should be", ys);
+  //println("y scale :", global.ScaleY, " should be", xs);
 }
 
 
@@ -50,6 +53,11 @@ void keyPressed() {
 
 void keyReleased() {
   global.updatekeys(char(key), false);
+}
+
+void mousePressed(){
+
+
 }
 
 class globals {
@@ -66,8 +74,8 @@ class globals {
 
   void updatekeys(char keyy, Boolean swit) {
     int iteam = (int) keyy;
-    //println(keyy);
-    //println(iteam);
+    println(keyy);
+    println(iteam);
     if (iteam<255) {
       keys[iteam]=swit;
     }

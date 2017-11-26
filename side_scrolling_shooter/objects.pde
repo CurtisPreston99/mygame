@@ -22,3 +22,31 @@ class step{
   }
   
 }
+
+
+class bullet {
+  float dx, dy;
+  float m;
+  int x;
+  int y;
+  bullet(int x1, int y1,int dx1, float dy1,float spd) {
+    x=x1;
+    y=y1;
+    if(dx1==0){
+    dx=0;
+    dy=spd;
+    }else{
+    dx=spd;
+    dy=(dy1/dx1)*spd;
+    }
+    println("dx :",dx);
+    println("dy :",dy);
+  }
+  
+  void drw(){
+    
+    rect(x,y,10,10);
+    x+=dx;
+    y+=dy;
+  }
+}

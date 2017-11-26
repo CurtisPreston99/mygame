@@ -1,9 +1,12 @@
 class player {
+  ArrayList<bullet> bul = new ArrayList<bullet>();
+  PImage[] temp={loadImage("player/1.png"),loadImage("player/2.png"),loadImage("player/3.png"),loadImage("player/2.png")};
+  sprite spr = new sprite(0,15,temp);
   int xspd=0;
   int yspd=0;
   int x, y, grav, jump, spd, floor;
-  int w=30;
-  int h=30;
+  int w=32;
+  int h=32;
   Boolean grounded=false;
   player(int x1, int y1, int grav1, int jump1, int spd1, int floor1) {
     x=x1;
@@ -16,9 +19,10 @@ class player {
 
 
 
-  void update() {
+  void update() {                
     //scale(global.ScaleX,global.ScaleY);
     //println("yspd  :",yspd);
+    //key press
     if(global.keys[97]){
       xspd=spd;
     }
@@ -32,12 +36,13 @@ class player {
     }
     //println("x :",x);
     //println("y :",y);
-    yspd+=grav;
+    yspd+=grav;//gravitty
     if (global.keys[119] && grounded) {
       yspd=-jump;
       grounded=false;
     }
-
+    
+    //collisions
     if (colva()&&yspd>0) {
       //println("ground");
       grounded=true;
@@ -55,7 +60,7 @@ class player {
 
  
 
-
+    //adding floor
     if (y+yspd+h/2<hig-floor) {
 
       y=y+yspd;
@@ -64,13 +69,32 @@ class player {
       grounded=true;
       yspd=0;
     }
+    
+    //sprite facing the right way
+    if(xspd<0){
+    spr.facing=1;
+    }
+    if(xspd>0){
+    spr.facing=0;
+    }
+    
+    //draw bullet from player
+    for(bullet x :bul){
+      x.drw();
+      //println(x.dx);
+    }
   }
 
 
 
   void dra() {
-    ellipse(x-15, y-15, w, h);
+    
+    
     line(0, hig-floor, 7000, hig-floor);
+    spr.drw(x-h/2,y-w/2);
+    noFill();
+    rect(x-15, y-15, 30, 30);
+    fill(255);
   }
 
   public boolean colva() {//colliision from above
@@ -137,14 +161,11 @@ class player {
 
     return coll;
   }
-}
-
-
-class bullet {
-  int dx, dy;
-  float m;
-  bullet(int x, int y) {
-    m=(mouseX-x)/(mouseY-y);
-    //println(m);
+  
+  
+  
+  void bullet(){
+    bul.add(new bullet(x,y,mouseX-x,mouseY-y,2));
+  
   }
 }

@@ -87,6 +87,14 @@ class player {
       
       //println(x.dx);
     }
+    
+    for (int i = 0; i < bul.size(); i++) {
+    bullet part = bul.get(i);
+    if(part.update()){
+      bul.remove(i);
+    }
+    part.drw();
+  }
   }
 
 
@@ -191,7 +199,7 @@ class player {
   
   
   void bullet(){
-    bul.add(new bullet(x,y,mouseX,mouseY,3));
+    bul.add(new bullet(x,y,mouseX/global.ScaleX,mouseY/global.ScaleY,3));
     
   
   }

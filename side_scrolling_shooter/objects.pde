@@ -67,6 +67,7 @@ class step {
 
 
 class bullet {
+  PImage img =loadImage("bullet/bullet.png");
   float dx, dy;
   float m;
   float x;
@@ -118,10 +119,22 @@ class bullet {
 
 
   void drw() {
-    //rectMode(CENTER);
+
     rect(x, y, 10, 10);
-    //rectMode(CORNER);
-    x+=dx;
+    pushMatrix();
+    rectMode(CENTER);
+
+    translate(x, y);
+    if (dx>0) {
+      rotate(atan(dy/dx));
+    } else {
+      rotate(atan(dy/dx)+PI);
+    }
+    
+    image(img, 0, 0);
+    rectMode(CORNER);
+    popMatrix();
+    x+=dx+player.xspd;
     y+=dy;
   }
 

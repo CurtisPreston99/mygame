@@ -19,8 +19,10 @@ image(sheet[index], x, y);
 }else{
   image(sheetflip[index], x, y);
 }
+if(speed>0){
 if(frameCount%speed==0){
 next();
+}
 }
 }
 void next(){

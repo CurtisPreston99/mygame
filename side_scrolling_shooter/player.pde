@@ -1,7 +1,7 @@
 class player {
   ArrayList<bullet> bul = new ArrayList<bullet>();
-  PImage[] temp={loadImage("player/1.png"),loadImage("player/2.png"),loadImage("player/3.png"),loadImage("player/2.png")};
-  sprite spr = new sprite(0,15,temp);
+  PImage[] temp={loadImage("player/1.png"), loadImage("player/2.png"), loadImage("player/3.png"), loadImage("player/2.png")};
+  sprite spr = new sprite(0, 15, temp);
   int xspd=0;
   int yspd=0;
   int x, y, grav, jump, spd, floor;
@@ -23,16 +23,16 @@ class player {
     //scale(global.ScaleX,global.ScaleY);
     //println("yspd  :",yspd);
     //key press
-    if(global.keys[97]){
+    if (global.keys[97]) {
       xspd=spd;
     }
-    if(global.keys[100]){
+    if (global.keys[100]) {
       xspd=-spd;
     }
-    
-    
-    if(!global.keys[100]&&!global.keys[97]){
-    xspd=0;
+
+
+    if (!global.keys[100]&&!global.keys[97]) {
+      xspd=0;
     }
     //println("x :",x);
     //println("y :",y);
@@ -41,27 +41,27 @@ class player {
       yspd=-jump;
       grounded=false;
     }
-    
+
     //collisions
     if (colva()&&yspd>0) {
       //println("ground");
       grounded=true;
       yspd=0;
     }
-    if(coldi()){
+    if (coldi()) {
       xspd=0;
     }
     if (colvb()&&yspd<0) {
-      
+
       //println("no-ground");
       grounded=false;
       yspd=0;
     }
-    if(colh()&&xspd!=0){
+    if (colh()&&xspd!=0) {
       xspd=0;
     }
 
- 
+
 
     //adding floor
     if (y+yspd+h/2<hig-floor) {
@@ -72,43 +72,43 @@ class player {
       grounded=true;
       yspd=0;
     }
-    
+
     //sprite facing the right way
-    if(xspd<0){
-    spr.facing=1;
+    if (xspd<0) {
+      spr.facing=1;
     }
-    if(xspd>0){
-    spr.facing=0;
+    if (xspd>0) {
+      spr.facing=0;
     }
-    
+
     //draw bullet from player
-    for(bullet x :bul){
+    for (bullet x : bul) {
       x.drw();
-      
+
       //println(x.dx);
     }
-    
+
     for (int i = 0; i < bul.size(); i++) {
-    bullet part = bul.get(i);
-    if(part.update()){
-      bul.remove(i);
+      bullet part = bul.get(i);
+      if (part.update()) {
+        bul.remove(i);
+      }
+      part.drw();
     }
-    part.drw();
-  }
   }
 
 
 
   void dra() {
-    
-    
+
+
     line(0, hig-floor, 7000, hig-floor);
-    spr.drw(x-h/2,y-w/2);
+    spr.drw(x-h/2, y-w/2);
     noFill();
     rect(x-15, y-15, 30, 30);
     fill(255);
   }
-  
+
   public boolean coldi() {//colliision from diaganal
     boolean coll=false;
 
@@ -121,7 +121,7 @@ class player {
 
 
         if (part.y<y+h/2+yspd && part.y+(part.h)>y+yspd) {
-          
+
           coll=true;
           //println(true);
         }
@@ -130,7 +130,7 @@ class player {
 
     return coll;
   }
-  
+
   public boolean colva() {//colliision from above
     boolean coll=false;
 
@@ -143,7 +143,7 @@ class player {
 
 
         if (part.y<y+h/2+yspd && part.y+(part.h)>y+yspd) {
-          
+
           coll=true;
           //println(true);
         }
@@ -195,12 +195,10 @@ class player {
 
     return coll;
   }
-  
-  
-  
-  void bullet(){
-    bul.add(new bullet(x,y,mouseX/global.ScaleX,mouseY/global.ScaleY,3));
-    
-  
+
+
+
+  void bullet() {
+    bul.add(new bullet(x, y, mouseX/global.ScaleX, mouseY/global.ScaleY, 0.5));
   }
 }

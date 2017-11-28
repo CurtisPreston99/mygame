@@ -67,6 +67,7 @@ class step {
 
 
 class bullet {
+  int count=1000;
   PImage img =loadImage("bullet/bullet.png");
   float dx, dy;
   float m;
@@ -134,17 +135,17 @@ class bullet {
     image(img, 0, 0);
     rectMode(CORNER);
     popMatrix();
-    x+=dx+player.xspd;
+    x+=dx+player.xspd/2;
     y+=dy;
   }
 
   public boolean update() {
-    if (x>width||x<0) {
-      return true;
-    }
-    if (y>height||y<0) {
-      return true;
-    }
+    count-=1;
+    if(count<0){
+      //println("bul del");
+    return true;
+    }else{
     return false;
+    }
   }
 }

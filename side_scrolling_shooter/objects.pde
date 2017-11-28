@@ -120,10 +120,10 @@ class bullet {
 
 
   void drw() {
-
-    rect(x, y, 10, 10);
-    pushMatrix();
     rectMode(CENTER);
+    rect(x, y, 10, 10);
+    rectMode(CORNER);
+    pushMatrix();
 
     translate(x, y);
     if (dx>0) {
@@ -133,7 +133,6 @@ class bullet {
     }
     
     image(img, 0, 0);
-    rectMode(CORNER);
     popMatrix();
     x+=dx+player.xspd/2;
     y+=dy;

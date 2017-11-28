@@ -82,12 +82,8 @@ class player {
     }
 
     //draw bullet from player
-    for (bullet x : bul) {
-      x.drw();
 
-      //println(x.dx);
-    }
-
+    
     for (int i = 0; i < bul.size(); i++) {
       bullet part = bul.get(i);
       if (part.update()) {
@@ -199,6 +195,6 @@ class player {
 
 
   void bullet() {
-    bul.add(new bullet(x, y, mouseX/global.ScaleX, mouseY/global.ScaleY, 0.5));
+    bul.add(new bullet(x, y, mouseX/global.ScaleX, mouseY/global.ScaleY, 10));
   }
 }

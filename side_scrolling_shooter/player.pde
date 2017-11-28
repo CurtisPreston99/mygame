@@ -48,6 +48,9 @@ class player {
       grounded=true;
       yspd=0;
     }
+    if(coldi()){
+      xspd=0;
+    }
     if (colvb()&&yspd<0) {
       
       //println("no-ground");
@@ -81,6 +84,7 @@ class player {
     //draw bullet from player
     for(bullet x :bul){
       x.drw();
+      
       //println(x.dx);
     }
   }
@@ -96,7 +100,29 @@ class player {
     rect(x-15, y-15, 30, 30);
     fill(255);
   }
+  
+  public boolean coldi() {//colliision from diaganal
+    boolean coll=false;
 
+    for (int i = 0; i < col.size(); i++) {
+      step part = col.get(i);
+
+      //println(part.x);
+      //println(part.w);
+      if (part.x-w+xspd/2<0&& part.x+xspd+w/2>-part.w) {
+
+
+        if (part.y<y+h/2+yspd && part.y+(part.h)>y+yspd) {
+          
+          coll=true;
+          //println(true);
+        }
+      }
+    }
+
+    return coll;
+  }
+  
   public boolean colva() {//colliision from above
     boolean coll=false;
 
@@ -165,7 +191,8 @@ class player {
   
   
   void bullet(){
-    bul.add(new bullet(x,y,mouseX-x,mouseY-y,2));
+    bul.add(new bullet(x,y,mouseX,mouseY,3));
+    
   
   }
 }

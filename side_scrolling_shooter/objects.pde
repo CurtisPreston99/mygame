@@ -21,50 +21,6 @@ class step {
 }
 
 
-//class playersbullet {
-//  float dx, dy;
-//  float m;
-//  int x;
-//  int y;
-//  playersbullet(float dx1, float dy1,float spd) {
-//    x=player.x;
-//    y=player.y;
-//    if(y-dy1<0){
-//    if(x-dx1<0){
-
-//    dy=((y-dy1)/(x-dx1))*spd;
-//    dx=((x-dx1)/(y-dy1))*spd;;
-//    }else{
-
-//    dy=-((y-dy1)/(x-dx1))*spd;
-//    dx=((x-dx1)/(y-dy1))*spd;
-//    }
-//    println(dx,"==",pow((pow(spd,2))-(pow(m,2)),0.5));;
-//    println(dy);
-//    println(dy1,"   :dy1");
-//  }else{
-
-//    if(x-dx1<0){
-//    dy=((y-dy1)/(x-dx1))*spd;
-//    dx=-((x-dx1)/(y-dy1))*spd;;
-//    }else{
-
-//    dy=-((y-dy1)/(x-dx1))*spd;
-//    dx=-((x-dx1)/(y-dy1))*spd;
-//    }
-//  }
-//  }
-
-
-//  void drw(){
-
-//    rect(x,y,10,10);
-//    x+=dx;
-//    y+=dy;
-//  }
-//}
-
-
 
 class bullet {
   int count=1000;
@@ -139,6 +95,20 @@ class bullet {
   }
 
   public boolean update() {
+    for (int i = 0; i < col.size(); i++) {
+      step temp=col.get(i);
+      if(x+10>temp.x+player.x && x-10<temp.x+player.x+temp.h){
+        if(y>temp.y&&y<temp.y+temp.h){
+      return true;
+        }
+      }
+      }
+     if(y+10>hig-player.floor){
+
+           println(y," True  ",hig-player.floor);
+                      return true;
+
+     }
     count-=1;
     if(count<0){
       //println("bul del");

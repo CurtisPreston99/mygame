@@ -20,6 +20,7 @@ void setup() {
   col.add(new step(300, 600, 50, 50));
   col.add(new step(500, 650, 50, 50));
   col.add(new step(450, 700, 50, 50));
+  col.add(new step(490, 500, 50, 50));
   scalex=0;
   scaley=0;
 }

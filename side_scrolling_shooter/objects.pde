@@ -15,7 +15,7 @@ class step {
       //println(true);
       rect(x+player.x, y, w, h);
     } else {
-      //println(false);
+      
     }
   }
 }

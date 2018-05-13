@@ -1,4 +1,5 @@
-car car = new car(275,400);
+car car = new car(275,400,20);
+boolean[] keys=new boolean[256];
 
 void setup(){
 size(800,800);
@@ -6,7 +7,6 @@ size(800,800);
 }
 
 void draw(){
-tint(0, 153, 204);
 //rect(0,0,width,height);
 car.dra();
 //car.directionupdate(car.direction+5);
@@ -15,44 +15,16 @@ car.dra();
 void keyPressed(){
   if(key=='a'){
     car.directionupdate(car.direction+5);
-
+    keys[97]=true;
   }
   if(key=='d'){
   car.directionupdate(car.direction-5);
 
   }
-}
-
-
-class car{
-float x;
-float y;
-float dx;
-float dy;
-int direction;
-int speed;
-
-car(int x1,int y1){
-dx=0;
-dy=0;
-direction=0;
-speed=10;
-x=x1;
-y=y1;
-}
-
-void directionupdate(int nd){
-direction=nd;
-
-dx=sin(radians(direction));
-dy=cos(radians(direction));
-
-}
-
-void dra(){
-rect(x,y,30,30);
-x=(x+(dx*speed));
-y=(y+(dy*speed));
-
-}
+  if(key=='w'){
+  car.spdup(1);
+  }
+  if(key=='s'){
+  car.spdup(-1);
+  }
 }
